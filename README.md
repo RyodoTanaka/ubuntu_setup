@@ -42,8 +42,7 @@
 ダウングレードした際には、元のバージョンである、`~/Downloads/opencv-x.x.x`が不要になります。手動で消去して下さい。  
 2015.09.10時点では、`3.0.0`以上のバージョンは保証できません。
 
-## OpenCV Version CHecker
-### Usage
+## OpenCV Version Checker
 ### Usage
 `source`コマンドを使って下さい。  
 **`sh`や、`bash`コマンドを使わないで下さい。**  
