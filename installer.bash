@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [ "$2" = "--auto" ]; then
+	auto_flg=1
+else
+	auto_flg=0
+fi
+
 echo "
  ██████╗ ██████╗ ███████╗███╗   ██╗ ██████╗██╗   ██╗                      
 ██╔═══██╗██╔══██╗██╔════╝████╗  ██║██╔════╝██║   ██║                      
@@ -39,14 +45,16 @@ if [ -e /usr/local/include/opencv2/core/version.hpp ]; then
 	
 	cv_version=${cv_epoch_num}${cv_major_num}.${cv_minor_num}${cv_revision_num}
 	echo "You already have OpenCV "${cv_version}
-	printf "Continue to install ? (yes/no) : "
-	read -r response
-	if [ ${response} = "y" -o ${response} = "yes" ];then
-		echo "OK. Continue to install."
-	else
-		echo "OK. Stoop to install."
-		cd ${pwd_dir}
-		return 0
+	if [ ${auto_flg} -eq 0 ]; then
+		printf "Continue to install ? (yes/no) : "
+		read -r response
+		if [ ${response} = "y" -o ${response} = "yes" ];then
+			echo "OK. Continue to install."
+		else
+			echo "OK. Stoop to install."
+			cd ${pwd_dir}
+			return 0
+		fi
 	fi
 else
 	echo "There is no OpenCV environment ... Install it."
@@ -60,12 +68,14 @@ else
 	OPENCV_VERSION=$1
 fi
 
-printf "Ready to Install. Start ? (yes/no) : "
-read -r start_flg
-if [ ${start_flg} != "y" -a ${start_flg} != "yes" ]; then
-	echo "OK. Stop to install."
-	cd ${pwd_dir}
-	return 0
+if [ ${auto_flg} -eq 0 ]; then
+	printf "Ready to Install. Start ? (yes/no) : "
+	read -r start_flg
+	if [ ${start_flg} != "y" -a ${start_flg} != "yes" ]; then
+		echo "OK. Stop to install."
+		cd ${pwd_dir}
+		return 0
+	fi
 fi
 	
 # 最初は前提ソフトウェアのインストール
