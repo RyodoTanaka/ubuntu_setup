@@ -33,15 +33,7 @@ echo "
     ██║   ██║██║   ██║██║   ██║                                       
     ╚██████╔╝╚██████╔╝╚██████╔╝                                       
      ╚═════╝  ╚═════╝  ╚═════╝                                        
-                                                                      
-██╗███╗   ██╗███████╗████████╗ █████╗ ██╗     ██╗     ███████╗██████╗ 
-██║████╗  ██║██╔════╝╚══██╔══╝██╔══██╗██║     ██║     ██╔════╝██╔══██╗
-██║██╔██╗ ██║███████╗   ██║   ███████║██║     ██║     █████╗  ██████╔╝
-██║██║╚██╗██║╚════██║   ██║   ██╔══██║██║     ██║     ██╔══╝  ██╔══██╗
-██║██║ ╚████║███████║   ██║   ██║  ██║███████╗███████╗███████╗██║  ██║
-╚═╝╚═╝  ╚═══╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝
-                                                                      
-                                                                      "
+                                                                                                                                           "
 
 pre_version=$(ls /opt/ros/ 2> /dev/null)
 
@@ -89,8 +81,8 @@ sudo apt-get install -yV ros-${Version}-desktop-full
 sudo rosdep init
 rosdep update
 
-if ! less ~/.bashrc | grep "/opt/ros/jade/setup.bash" > /dev/null; then
-	echo "source /opt/ros/jade/setup.bash" >> ~/.bashrc
+if ! less ~/.bashrc | grep "/opt/ros/${Version}/setup.bash" > /dev/null; then
+	echo "source /opt/ros/${Version}/setup.bash" >> ~/.bashrc
 fi
 source ~/.bashrc
 
