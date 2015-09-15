@@ -38,7 +38,7 @@ sudo apt-get install -yV perl
 sudo apt-get install -yV perl-tk
 
 echo "Start unpack"
-tar -xvzf ./data/install-tl-unx.tar.gz 
+tar -xvzf ${pwd_dir}/data/install-tl-unx.tar.gz 
 cd install-tl-*
 
 echo "Start Installer"
@@ -49,9 +49,9 @@ EOF
 echo "Set Path & Environments"
 
 echo "# TeX Live" >> ~/.bashrc
-echo "export INFOPATH=$INFOPATH:/usr/local/texlive/2015/texmf-dist/doc/info" >> ~/.bashrc
-echo "export MANPATH=$MANPATH:/usr/local/texlive/2015/texmf-dist/doc/man" >> ~/.bashrc
-echo "export PATH=$PATH:/usr/local/texlive/2015/bin/x86_64-linux" >> ~/.bashrc
+echo "export INFOPATH=\$INFOPATH:/usr/local/texlive/2015/texmf-dist/doc/info" >> ~/.bashrc
+echo "export MANPATH=\$MANPATH:/usr/local/texlive/2015/texmf-dist/doc/man" >> ~/.bashrc
+echo "export PATH=\$PATH:/usr/local/texlive/2015/bin/x86_64-linux" >> ~/.bashrc
 
 cd ${pwd_dir}
 sudo /usr/local/texlive/2015/bin/x86_64-linux/tlmgr path add
