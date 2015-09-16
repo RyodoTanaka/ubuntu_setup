@@ -1,5 +1,7 @@
 #!/bin/bash
 
+pwd_dir=$(pwd)
+
 if [ "$2" = "--auto" ]; then
 	auto_flg=1
 else
@@ -124,8 +126,9 @@ sudo apt-get -yV install libavformat-dev
 sudo apt-get -yV install libavutil-dev
 sudo apt-get -yV install libswscale-dev
 
-cd ~/Downloads/
-if [ -e ~/Downloads/opencv-${OPENCV_VERSION} ]; then
+mkdir -p ${pwd_dir}/source
+cd ${pwd_dir}/source
+if [ -e ${pwd_dir}/source/opencv-${OPENCV_VERSION} ]; then
 	echo "File opencv-${OPENCV_VERSION} exists"
 else
 	wget http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/${OPENCV_VERSION}/opencv-${OPENCV_VERSION}.zip
