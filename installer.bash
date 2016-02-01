@@ -35,7 +35,7 @@ echo "
      ╚═════╝  ╚═════╝  ╚═════╝                                        
                                                                                                                                            "
 
-pre_version=$(ls /opt/ros/ 2> /dev/null)
+pre_version=$(ls /opt/ros/ > /dev/null)
 
 if [ -n "$pre_version" ]; then
 	echo "Yor already have ROS : "${pre_version}
@@ -74,6 +74,7 @@ if [ ${auto_flg} -eq 0 ]; then
 fi
 
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+
 Yes | sudo apt-key adv --keyserver hkp://pool.sks-keyservers.net --recv-key 0xB01FA116 
 sudo apt-get update
 
@@ -87,9 +88,5 @@ fi
 source ~/.bashrc
 
 sudo apt-get install -yV python-rosinstall
-
-if [ "$Version" = "jade" ]; then
-	sudo apt-get source ros-jade-laser-pipeline
-fi
 
 echo "ROS Installer Finished !!"
