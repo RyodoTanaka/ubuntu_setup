@@ -75,10 +75,10 @@ fi
 
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 
-Yes | sudo apt-key adv --keyserver hkp://pool.sks-keyservers.net --recv-key 0xB01FA116 
+yes | sudo apt-key adv --keyserver hkp://pool.sks-keyservers.net --recv-key 0xB01FA116 
 sudo apt-get update
 
-sudo apt-get install -yV ros-${Version}-desktop-full
+sudo apt-get install --force-yes -yV ros-${Version}-desktop-full
 sudo rosdep init
 rosdep update
 
@@ -87,6 +87,6 @@ if ! less ~/.bashrc | grep "/opt/ros/${Version}/setup.bash" > /dev/null; then
 fi
 source ~/.bashrc
 
-sudo apt-get install -yV python-rosinstall
+sudo apt-get install --force-yes -yV python-rosinstall
 
 echo "ROS Installer Finished !!"
