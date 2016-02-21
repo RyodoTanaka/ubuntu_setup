@@ -74,7 +74,7 @@ if [ ${auto_flg} -eq 0 ]; then
 fi
 
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-
+wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
 yes | sudo apt-key adv --keyserver hkp://pool.sks-keyservers.net --recv-key 0xB01FA116 
 sudo apt-get update
 
