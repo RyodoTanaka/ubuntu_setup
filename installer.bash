@@ -38,24 +38,13 @@ sudo apt-get install -yV perl
 sudo apt-get install -yV perl-tk
 
 echo "Start unpack"
-tar -xvzf ${pwd_dir}/data/install-tl-unx.tar.gz 
-cd install-tl-*
+sudo apt-get install -yV texlive-full
+sudo apt-get install -yV texlive-lang-cjk
+sudo apt-get install -yV texlive-science
+sudo apt-get install -yV texlive-math-extra 
+sudo apt-get install -yV xdvik-ja
 
 echo "Start Installer"
-sudo ./install-tl << EOF
-I
-EOF
-
-echo "Set Path & Environments"
-
-echo "# TeX Live" >> ~/.bashrc
-echo "export INFOPATH=\$INFOPATH:/usr/local/texlive/2015/texmf-dist/doc/info" >> ~/.bashrc
-echo "export MANPATH=\$MANPATH:/usr/local/texlive/2015/texmf-dist/doc/man" >> ~/.bashrc
-echo "export PATH=\$PATH:/usr/local/texlive/2015/bin/x86_64-linux" >> ~/.bashrc
-
-cd ${pwd_dir}
-sudo /usr/local/texlive/2015/bin/x86_64-linux/tlmgr path add
-sudo mkdir -p /usr/local/texlive/texmf-local/web2c
 sudo cp ./texmf.cnf /usr/local/texlive/texmf-local/web2c/texmf.cnf
 sudo mktexlsr
 sudo kanji-config-updmap-sys ipaex
