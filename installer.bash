@@ -79,6 +79,7 @@ yes | sudo apt-key adv --keyserver hkp://pool.sks-keyservers.net --recv-key 0xB0
 sudo apt-get update
 
 sudo apt-get install --force-yes -yV ros-${Version}-desktop-full
+sudo apt-get install -yV python-catkin-tools
 sudo rosdep init
 rosdep update
 
