@@ -35,5 +35,5 @@ if [ ${auto_flg} -eq 0 ]; then
 	fi
 fi
 yes | sudo add-apt-repository ppa:v-launchpad-jochen-sprickerhof-de/pcl
-sudo apt-get update
-sudo apt-get install -yV libpcl-all
+sudo apt install -yV libpcl-all
+sudo apt insstall -yV pcl-tools
