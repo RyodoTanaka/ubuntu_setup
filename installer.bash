@@ -33,20 +33,8 @@ if [ ${auto_flg} -eq 0 ]; then
     fi
 fi
 
-
-sudo apt-get remove emacs
-sudo apt-get remove emacs23
-sudo apt-get build-dep emacs24
-                                       
-# Emacs
-if [ ! -e  ${pwd_dir}/source/emacs* ];then
-    mkdir -p ${pwd_dir}/source
-    cd ${pwd_dir}/source
-    wget http://ftp.jaist.ac.jp/pub/GNU/emacs/emacs-24.4.tar.gz
-    tar -xf emacs-24.4.tar.gz
-fi
-cd ${pwd_dir}/source/emacs-24.4/
-./configure
-make
-sudo make install
+sudo apt -yV install emacs24
+sudo apt -yV install emacs-mozc emacs-mozc-bin
+cd ~
+git clone https://github.com/RyodoTanaka/.emacs.d.git
 cd ${pwd_dir}
