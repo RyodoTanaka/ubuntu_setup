@@ -83,11 +83,6 @@ sudo apt-get install -yV python-catkin-tools
 sudo rosdep init
 rosdep update
 
-if ! less ~/.bashrc | grep "/opt/ros/${Version}/setup.bash" > /dev/null; then
-	echo "source /opt/ros/${Version}/setup.bash" >> ~/.bashrc
-fi
-source ~/.bashrc
-
 sudo apt-get install --force-yes -yV python-rosinstall
 
 echo "ROS Installer Finished !!"
