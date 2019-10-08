@@ -24,6 +24,6 @@ RUN apt -y install git
 # emacsのインストール
 RUN add-apt-repository ppa:kelleyk/emacs
 RUN apt update
-RUN apt install emacs26 emacs26-common
+RUN apt -y install emacs26 emacs26-common
 RUN git clone https://github.com/RyodoTanaka/.emacs.d.git /home/ryodo/.emacs.d
 
