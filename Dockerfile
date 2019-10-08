@@ -1,5 +1,5 @@
 FROM osrf/ros:melodic-desktop-full
-LABEL maintainer "RyodoTanaka <groadpg@gmail.com>"
+LABEL maintainer "RyodoTanaka"
 
 # ROOTにパスワードをセット
 RUN echo 'root:root' | chpasswd
