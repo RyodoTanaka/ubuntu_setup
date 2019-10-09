@@ -49,7 +49,7 @@ RUN git clone https://github.com/RyodoTanaka/.emacs.d.git /home/$user_name/.emac
 # 各種必要パッケージのインストール
 # HackGenのインストール（フォント）
 RUN mkdir /home/$user_name/.fonts
-RUN wget wget https://github.com/yuru7/HackGen/releases/download/v1.2.1/HackGen_v1.2.1.zip -P /home/$user_name/.fonts/
+RUN wget https://github.com/yuru7/HackGen/releases/download/v1.2.1/HackGen_v1.2.1.zip -P /home/$user_name/.fonts
 RUN unzip /home/$user_name/.fonts//HackGen_v1.2.1.zip -d /home/$user_name/.fonts
 # CMakeのインストール
 RUN mkdir /home/$user_name/.emacs.d/lib
@@ -64,7 +64,7 @@ RUN apt update
 RUN apt -y install gcc7
 # cclsのインストール
 RUN git clone --depth=1 --recursive https://github.com/MaskRay/ccls /home/$user_name/.emacs.d/lib/ccls
-RUN wget -c http://releases.llvm.org/8.0.0/clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz -P /home/$user_name/.emacs.d/lib/ccls
+RUN wget http://releases.llvm.org/8.0.0/clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz -P /home/$user_name/.emacs.d/lib/ccls
 RUN tar xf /home/$user_name/.emacs.d/lib/ccls/clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz -C /home/$user_name/.emacs.d/lib/ccls
 RUN cd /home/$user_name/.emacs.d/lib/ccls && cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=$PWD/clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04
 RUN cd /home/$user_name/.emacs.d/lib/ccls/ cmake --build Release --target install
