@@ -74,3 +74,11 @@ RUN git clone https://github.com/RyodoTanaka/.bash_extend.git /home/$user_name/.
 RUN echo "source /home/$user_name/.bash_extend/ud.bash" >> /home/$user_name/.bashrc
 RUN echo "source /home/$user_name/.bash_extend/ros.bash melodic" >> /home/$user_name/.bashrc
 RUN echo "source /home/$user_name/.bash_extend/rosaddress.bash" >> /home/$user_name/.bashrc
+
+#######################
+## PCLのインストール ##
+######################
+RUN add-apt-repository ppa:v-launchpad-jochen-sprickerhof-de/pcl
+RUN apt update
+RUN apt install -y libpcl-all
+RUN apt install -y pcl-tools
