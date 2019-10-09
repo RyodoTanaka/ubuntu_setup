@@ -34,6 +34,8 @@ RUN apt -y install rar
 RUN apt -y install openssh-server
 # build-essential
 RUN apt -y install build-essential
+# wget
+RUN apt -y install wget
 
 #########################
 ## Emacsのインストール ##
