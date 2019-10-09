@@ -27,6 +27,9 @@ RUN apt -y install software-properties-common
 RUN apt -y install git
 # network-tool
 RUN apt -y install net-tools
+# rar unrar
+RUN apt -y install unrar
+RUN apt -y install rar
 
 # emacsのインストール
 RUN add-apt-repository ppa:kelleyk/emacs
