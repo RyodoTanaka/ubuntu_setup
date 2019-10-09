@@ -20,7 +20,10 @@ RUN apt update && apt -y upgrade && sudo apt -y dist-upgrade
 # apt-add-repository出来るようにするために追加
 RUN apt -y install software-properties-common
 
-# gitのインストール
+#################################
+## 各種パッケージのインストール ##
+#################################
+# git
 RUN apt -y install git
 
 # emacsのインストール
