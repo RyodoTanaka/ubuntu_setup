@@ -32,6 +32,8 @@ RUN apt -y install unrar
 RUN apt -y install rar
 # openssh
 RUN apt -y install openssh-server
+# build-essential
+RUN apt -y install build-essential
 
 # emacsのインストール
 RUN add-apt-repository ppa:kelleyk/emacs
