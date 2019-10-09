@@ -51,7 +51,34 @@ RUN git clone https://github.com/RyodoTanaka/.emacs.d.git /home/$user_name/.emac
 RUN mkdir /home/$user_name/.fonts
 RUN wget https://github.com/yuru7/HackGen/releases/download/v1.2.1/HackGen_v1.2.1.zip -P /home/$user_name/.fonts
 RUN unzip /home/$user_name/.fonts//HackGen_v1.2.1.zip -d /home/$user_name/.fonts
-# Qt5のインストール
+
+# CMake3.15.4のインストール
+RUN wget https://github.com/Kitware/CMake/releases/download/v3.15.4/cmake-3.15.4-Linux-x86_64.sh -P /usr/local/share 
+RUN cd /usr/local/share/ && yes | bash cmake-3.15.4-Linux-x86_64.sh
+RUN cd /usr/local/share/ && ln -s cmake-3.15.2-Linux-x86_64/bin/* /usr/local/bin/
+
+# gcc>=7.2のインストール
+RUN add-apt-repository ppa:ubuntu-toolchain-r/test
+RUN apt update
+RUN apt -y install gcc-7
+# cclsのインストール
+RUN git clone --depth=1 --recursive https://github.com/MaskRay/ccls /home/$user_name/.emacs.d/lib/ccls
+RUN wget http://releases.llvm.org/8.0.0/clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz -P /home/$user_name/.emacs.d/lib/ccls
+RUN tar xf /home/$user_name/.emacs.d/lib/ccls/clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz -C /home/$user_name/.emacs.d/lib/ccls
+RUN cd /home/$user_name/.emacs.d/lib/ccls && cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=$PWD/clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04
+RUN cd /home/$user_name/.emacs.d/lib/ccls/ cmake --build Release --target install
+
+###################################
+## bash関係のコマンドインストール ##
+###################################
+RUN git clone https://github.com/RyodoTanaka/.bash_extend.git /home/$user_name/.bash_extend
+RUN echo "source /home/$user_name/.bash_extend/ud.bash" >> /home/$user_name/.bashrc
+RUN echo "source /home/$user_name/.bash_extend/ros.bash melodic" >> /home/$user_name/.bashrc
+RUN echo "source /home/$user_name/.bash_extend/rosaddress.bash" >> /home/$user_name/.bashrc
+
+#######################
+## Qt5のインストール ##
+#######################
 RUN add-apt-repository ppa:beineri/opt-qt-5.12.0-bionic
 RUN apt update
 RUN apt -y install qt512base
