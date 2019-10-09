@@ -30,6 +30,8 @@ RUN apt -y install net-tools
 # rar unrar
 RUN apt -y install unrar
 RUN apt -y install rar
+# openssh
+RUN apt -y install openssh-server
 
 # emacsのインストール
 RUN add-apt-repository ppa:kelleyk/emacs
