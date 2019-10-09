@@ -1,0 +1,11 @@
+# TeX
+/TeX/install-tl*
+*~
+
+# Emacs
+/Emacs/source
+
+# OpenCV
+/OpenCV/source
+
+source/
