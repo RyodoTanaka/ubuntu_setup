@@ -67,3 +67,10 @@ RUN tar xf /home/$user_name/.emacs.d/lib/ccls/clang+llvm-8.0.0-x86_64-linux-gnu-
 RUN cd /home/$user_name/.emacs.d/lib/ccls && cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=$PWD/clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04
 RUN cd /home/$user_name/.emacs.d/lib/ccls/ cmake --build Release --target install
 
+###################################
+## bash関係のコマンドインストール ##
+###################################
+RUN git clone https://github.com/RyodoTanaka/.bash_extend.git /home/$user_name/.bash_extend
+RUN echo "source /home/$user_name/.bash_extend/ud.bash" >> /home/$user_name/.bashrc
+RUN echo "source /home/$user_name/.bash_extend/ros.bash melodic" >> /home/$user_name/.bashrc
+RUN echo "source /home/$user_name/.bash_extend/rosaddress.bash" >> /home/$user_name/.bashrc
