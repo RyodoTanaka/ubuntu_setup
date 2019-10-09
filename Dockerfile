@@ -123,31 +123,6 @@ RUN apt -y install libqt5webengine-data
 RUN apt -y install libqt5network5
 RUN apt -y install libqt5quickwidgets5
 RUN apt -y install libqt5webenginewidgets5 
-# CMakeのインストール
-RUN mkdir /home/$user_name/.emacs.d/lib
-RUN git clone -b release --depth=1 https://github.com/Kitware/CMake.git /home/$user_name/.emacs.d/lib/CMake
-RUN /home/$user_name/.emacs.d/lib/CMake/bootstrap
-RUN make -j`nproc` -C /home/$user_name/.emacs.d/lib/CMake
-RUN make -j`nproc` -C /home/$user_name/.emacs.d/lib/CMake install
-RUN echo "alias cmake=/usr/local/bin/cmake" >> /home/$user_name/.bashrc
-# gcc>=7.2のインストール
-RUN add-apt-repository ppa:ubuntu-toolchain-r/test
-RUN apt update
-RUN apt -y install gcc7
-# cclsのインストール
-RUN git clone --depth=1 --recursive https://github.com/MaskRay/ccls /home/$user_name/.emacs.d/lib/ccls
-RUN wget http://releases.llvm.org/8.0.0/clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz -P /home/$user_name/.emacs.d/lib/ccls
-RUN tar xf /home/$user_name/.emacs.d/lib/ccls/clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz -C /home/$user_name/.emacs.d/lib/ccls
-RUN cd /home/$user_name/.emacs.d/lib/ccls && cmake -H. -BRelease -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=$PWD/clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04
-RUN cd /home/$user_name/.emacs.d/lib/ccls/ cmake --build Release --target install
-
-###################################
-## bash関係のコマンドインストール ##
-###################################
-RUN git clone https://github.com/RyodoTanaka/.bash_extend.git /home/$user_name/.bash_extend
-RUN echo "source /home/$user_name/.bash_extend/ud.bash" >> /home/$user_name/.bashrc
-RUN echo "source /home/$user_name/.bash_extend/ros.bash melodic" >> /home/$user_name/.bashrc
-RUN echo "source /home/$user_name/.bash_extend/rosaddress.bash" >> /home/$user_name/.bashrc
 
 #######################
 ## PCLのインストール ##
