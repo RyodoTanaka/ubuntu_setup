@@ -25,6 +25,8 @@ RUN apt -y install software-properties-common
 #################################
 # git
 RUN apt -y install git
+# network-tool
+RUN apt -y install net-tools
 
 # emacsのインストール
 RUN add-apt-repository ppa:kelleyk/emacs
