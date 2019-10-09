@@ -51,6 +51,51 @@ RUN git clone https://github.com/RyodoTanaka/.emacs.d.git /home/$user_name/.emac
 RUN mkdir /home/$user_name/.fonts
 RUN wget https://github.com/yuru7/HackGen/releases/download/v1.2.1/HackGen_v1.2.1.zip -P /home/$user_name/.fonts
 RUN unzip /home/$user_name/.fonts//HackGen_v1.2.1.zip -d /home/$user_name/.fonts
+# Qt5のインストール
+RUN add-apt-repository ppa:beineri/opt-qt-5.12.0-bionic
+RUN apt update
+RUN apt -y install qt512base
+RUN apt -y install qt5-default
+RUN apt -y install qt5-qmake-bin
+RUN apt -y install qt512gamepad
+RUN apt -y install qt5-gtk-platformtheme
+RUN apt -y install qt5-qmltooling-plugins
+RUN apt -y install qt5-assistant
+RUN apt -y install qt5-qmake
+RUN apt -y install qt5-style-plugins
+RUN apt -y install libqt5concurrent5
+RUN apt -y install libqt5opengl5
+RUN apt -y install libqt5sensors5
+RUN apt -y install libqt5webkit5
+RUN apt -y install libqt5core5a
+RUN apt -y install libqt5opengl5-dev
+RUN apt -y install libqt5sql5
+RUN apt -y install libqt5webkit5-dev
+RUN apt -y install libqt5dbus5
+RUN apt -y install libqt5positioning5
+RUN apt -y install libqt5sql5-sqlite
+RUN apt -y install libqt5widgets5
+RUN apt -y install libqt5designer5
+RUN apt -y install libqt5printsupport5
+RUN apt -y install libqt5svg5
+RUN apt -y install libqt5x11extras5
+RUN apt -y install libqt5designercomponents5
+RUN apt -y install libqt5qml5
+RUN apt -y install libqt5test5
+RUN apt -y install libqt5x11extras5-dev
+RUN apt -y install libqt5gui5
+RUN apt -y install libqt5quick5
+RUN apt -y install libqt5webchannel5
+RUN apt -y install libqt5xml5
+RUN apt -y install libqt5help5
+RUN apt -y install libqt5quickparticles5
+RUN apt -y install libqt5webenginecore5       
+RUN apt -y install libqt5keychain1
+RUN apt -y install libqt5quicktest5
+RUN apt -y install libqt5webengine-data       
+RUN apt -y install libqt5network5
+RUN apt -y install libqt5quickwidgets5
+RUN apt -y install libqt5webenginewidgets5 
 # CMakeのインストール
 RUN mkdir /home/$user_name/.emacs.d/lib
 RUN git clone -b release --depth=1 https://github.com/Kitware/CMake.git /home/$user_name/.emacs.d/lib/CMake
