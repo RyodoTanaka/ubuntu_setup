@@ -127,8 +127,8 @@ RUN apt -y install libqt5webenginewidgets5
 #######################
 ## PCLのインストール ##
 ######################
-RUN add-apt-repository ppa:v-launchpad-jochen-sprickerhof-de/pcl
 RUN apt update
+RUN apt install -y libpcl-dev
 RUN apt install -y libpcl-all
 RUN apt install -y pcl-tools
 
