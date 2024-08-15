@@ -117,4 +117,4 @@ sudo apt install -yV texlive-science-doc
 sudo apt install -yV texlive-xetex
 sudo apt install -yV tipa vprerex
 sudo apt install -yV xdvik-ja 
-cp latexmkrc ~/.latexmkrc
+cp ${pwd_dir}/latexmkrc ~/.latexmkrc
